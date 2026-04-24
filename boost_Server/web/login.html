@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录 - Local Boost.Beast Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body class="auth-page">
+    <nav class="site-nav detail-nav" aria-label="主导航">
+        <a class="brand" href="/">我的博客</a>
+        <div class="nav-links">
+            <form class="nav-search" role="search">
+                <input type="search" name="q" placeholder="搜索文章" aria-label="搜索文章">
+                <button type="submit">搜索</button>
+            </form>
+            <a href="/">首页</a>
+            <a href="/#articles">文章</a>
+            <a href="/#about">关于</a>
+        </div>
+    </nav>
+
+    <main class="auth-shell">
+        <section class="auth-card">
+            <div class="auth-intro">
+                <p class="detail-kicker">Account</p>
+                <h1>登录博客账号</h1>
+                <p>使用账号和密码登录。注册时服务端会把密码转成 MD5 后写入 SQLite 数据库。</p>
+            </div>
+
+            <div class="auth-tabs" role="tablist" aria-label="账号操作">
+                <button class="auth-tab is-active" type="button" data-auth-mode="login">登录</button>
+                <button class="auth-tab" type="button" data-auth-mode="register">注册</button>
+            </div>
+
+            <form class="auth-form" data-auth-form>
+                <label>
+                    <span>账号</span>
+                    <input type="text" name="username" autocomplete="username" minlength="3" maxlength="32" required>
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input type="password" name="password" autocomplete="current-password" minlength="4" maxlength="64" required>
+                </label>
+                <button class="auth-submit" type="submit">登录</button>
+                <p class="auth-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

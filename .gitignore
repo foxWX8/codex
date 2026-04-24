@@ -1,0 +1,28 @@
+# Visual Studio user/cache files
+.vs/
+*.suo
+*.user
+*.VC.db
+*.ipch
+
+# Build outputs
+x64/
+Debug/
+Release/
+boost_Server/x64/
+boost_Server/Debug/
+boost_Server/Release/
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.recipe
+*.tlog
+*.log
+
+# Runtime database with local account/comment data
+users.db
+*.db
+
+# Downloaded archives; keep extracted source files instead
+*.zip

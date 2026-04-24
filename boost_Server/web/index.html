@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的博客 - 开发学习记录</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <nav class="site-nav" aria-label="主导航">
+        <a class="brand" href="#">我的博客</a>
+        <div class="nav-links">
+            <form class="nav-search" role="search">
+                <input type="search" name="q" placeholder="搜索文章" aria-label="搜索文章">
+                <button type="submit">搜索</button>
+            </form>
+            <a href="#">首页</a>
+            <a href="#articles">文章</a>
+            <a href="#about">关于</a>
+            <a href="#notice">公告</a>
+            <a href="/login.html">登录</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>我的博客 - 开发学习记录</h1>
+            <p class="typing" data-text="与工程、技术、日常和灵感有关的一方小世界。">与工程、技术、日常和灵感有关的一方小世界。</p>
+            <div class="hero-actions">
+                <a href="#articles">开始阅读</a>
+                <a href="#about">认识我</a>
+            </div>
+        </div>
+        <a class="scroll-down" href="#articles" aria-label="向下滚动">v</a>
+        <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,52 C180,104 360,0 540,48 C720,98 900,16 1080,42 C1220,64 1340,74 1440,44 L1440,90 L0,90 Z"></path>
+        </svg>
+    </header>
+
+    <main class="container" id="articles">
+        <aside class="sidebar" id="about">
+            <section class="panel profile">
+                <div class="avatar">B</div>
+                <h2>我的博客</h2>
+                <p>记录开发学习、项目经验和生活片段。</p>
+                <div class="stats" aria-label="博客统计">
+                    <div><strong>128</strong><span>文章</span></div>
+                    <div><strong>36k</strong><span>访问</span></div>
+                    <div><strong>42</strong><span>标签</span></div>
+                </div>
+                <a class="follow-btn" href="#articles">查看文章</a>
+                <div class="web-info">
+                    <div><span>建站时间</span><span>2026-04-24</span></div>
+                    <div><span>运行环境</span><span>Boost.Beast</span></div>
+                    <div><span>当前状态</span><span>本地运行中</span></div>
+                </div>
+            </section>
+        </aside>
+
+        <section>
+            <div class="notice-card" id="notice">
+                <strong>公告</strong>
+                <p>欢迎来到我的博客，这里会持续整理 C++、服务器开发、前端页面和一些小项目实践。</p>
+            </div>
+
+            <article class="article-card" data-href="/article.html?id=1" data-search="boost beast c++ http server local 服务端 服务器 搭建 开发记录" style="--c1:#87a8ff;--c2:#977fcb;">
+                <div class="cover"><span>01</span></div>
+                <div class="article-body">
+                    <h2><a href="#">Boost.Beast 本地 HTTP 服务器搭建记录</a></h2>
+                    <div class="meta"><span>2026-04-24</span><span>开发记录</span><span>浏览 128</span></div>
+                    <p>从 socket 监听到 HTTP 响应，把一个简单的 C++ 服务变成可以在浏览器中访问的个人博客首页。</p>
+                    <div class="tags"><span>C++</span><span>Boost</span><span>HTTP</span></div>
+                </div>
+            </article>
+
+            <article class="article-card reverse" data-href="/article.html?id=2" data-search="html css ui frontend page design blog portal 前端 网页 样式 重构 博客" style="--c1:#ffb199;--c2:#ff7242;">
+                <div class="cover"><span>02</span></div>
+                <div class="article-body">
+                    <h2><a href="#">网页风格重构：从极简页到博客门户</a></h2>
+                    <div class="meta"><span>2026-04-18</span><span>前端设计</span><span>浏览 96</span></div>
+                    <p>使用全屏首图、毛玻璃卡片、文章封面和侧边栏信息，把静态页面做得更像完整的个人博客。</p>
+                    <div class="tags"><span>HTML</span><span>CSS</span><span>UI</span></div>
+                </div>
+            </article>
+
+            <article class="article-card" data-href="/article.html?id=3" data-search="notes study learning daily growth 笔记 学习 维护 成长 日常" style="--c1:#91eae4;--c2:#7f7fd5;">
+                <div class="cover"><span>03</span></div>
+                <div class="article-body">
+                    <h2><a href="#">学习笔记应该怎样长期维护</a></h2>
+                    <div class="meta"><span>2026-04-09</span><span>随笔</span><span>浏览 73</span></div>
+                    <p>比起一次写完，持续补充和整理更适合个人博客。让每篇文章都成为下一次学习的入口。</p>
+                    <div class="tags"><span>笔记</span><span>成长</span><span>日常</span></div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer id="links">
+        Local Boost.Beast Blog Server · 独立前端文件加载
+    </footer>
+</body>
+</html>

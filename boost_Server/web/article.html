@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>文章详情 - Local Boost.Beast Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body class="article-page">
+    <nav class="site-nav detail-nav" aria-label="主导航">
+        <a class="brand" href="/">我的博客</a>
+        <div class="nav-links">
+            <form class="nav-search" role="search">
+                <input type="search" name="q" placeholder="搜索文章" aria-label="搜索文章">
+                <button type="submit">搜索</button>
+            </form>
+            <a href="/">首页</a>
+            <a href="/#articles">文章</a>
+            <a href="/#about">关于</a>
+            <a href="/login.html">登录</a>
+        </div>
+    </nav>
+
+    <header class="detail-hero">
+        <div class="detail-hero-inner">
+            <a class="crumb-link" href="/">返回首页</a>
+            <p class="detail-kicker">开发记录 / Boost.Beast / Frontend</p>
+            <h1>Boost.Beast 本地 HTTP 服务搭建记录</h1>
+            <div class="detail-meta">
+                <span>发布于 2026-04-24</span>
+                <span>阅读 128</span>
+                <span>约 6 分钟</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="detail-layout">
+        <article class="detail-article">
+            <section id="intro">
+                <p class="lead">这篇文章用一个轻量的本地服务做例子，把 C++、Boost.Beast 和静态前端文件串起来。目标不是把所有细节一次写满，而是先搭出一个可以访问、可以继续扩展的个人博客原型。</p>
+            </section>
+
+            <section id="server">
+                <h2>服务端负责什么</h2>
+                <p>当前服务端只做三件事：监听端口、解析 HTTP 请求、从 web 目录读取静态文件并返回。这样的职责边界很清楚，后续想增加路由、接口或者缓存策略时，也能沿着已有结构继续生长。</p>
+                <div class="note-box">
+                    <strong>实现重点</strong>
+                    <p>把页面资源保持为独立文件，可以让前端调样式和交互时不需要重新编译 C++ 项目，刷新浏览器就能看到结果。</p>
+                </div>
+            </section>
+
+            <section id="frontend">
+                <h2>前端页面的组织</h2>
+                <p>首页使用文章卡片承载入口，详情页则切换成更安静的阅读布局：顶部是沉浸式标题区，中间是正文内容，右侧放目录和作者信息。这种结构更接近独立博客文章页，阅读节奏也更舒服。</p>
+                <pre><code>GET /article.html?id=1
+GET /styles.css
+GET /app.js</code></pre>
+            </section>
+
+            <section id="interaction">
+                <h2>可以继续补的交互</h2>
+                <p>目前已经有阅读进度条、返回顶部和文章卡片点击跳转。下一步可以加入评论、目录高亮、文章搜索，或者把文章内容从 JSON 文件中动态读取出来。</p>
+                <div class="tag-row">
+                    <span>C++</span>
+                    <span>Boost.Beast</span>
+                    <span>静态页面</span>
+                    <span>个人博客</span>
+                </div>
+            </section>
+
+            <nav class="post-switch" aria-label="文章切换">
+                <a href="/">上一篇：首页样式重构</a>
+                <a href="/">下一篇：笔记系统维护</a>
+            </nav>
+
+            <section class="comment-section" data-comments>
+                <div class="comment-head">
+                    <div>
+                        <p class="detail-kicker">Comments</p>
+                        <h2>评论区</h2>
+                    </div>
+                    <span class="comment-user" data-comment-user></span>
+                </div>
+
+                <div class="comment-login" data-comment-login>
+                    <p>登录后可以查看并发布评论。</p>
+                    <a href="/login.html">去登录</a>
+                </div>
+
+                <form class="comment-form" data-comment-form hidden>
+                    <textarea name="content" maxlength="500" placeholder="写下你的评论..." required></textarea>
+                    <div class="comment-actions">
+                        <span class="comment-message" data-comment-message></span>
+                        <button type="submit">发表评论</button>
+                    </div>
+                </form>
+
+                <div class="comment-list" data-comment-list hidden></div>
+            </section>
+        </article>
+
+        <aside class="detail-sidebar">
+            <section class="panel author-mini">
+                <div class="avatar">B</div>
+                <h2>我的博客</h2>
+                <p>记录开发学习、项目经验和生活片段。</p>
+            </section>
+
+            <section class="panel toc">
+                <h2>目录</h2>
+                <a href="#intro">开篇</a>
+                <a href="#server">服务端负责什么</a>
+                <a href="#frontend">前端页面的组织</a>
+                <a href="#interaction">可以继续补的交互</a>
+            </section>
+        </aside>
+    </main>
+
+    <footer>
+        Local Boost.Beast Blog Server · Article Detail
+    </footer>
+</body>
+</html>
