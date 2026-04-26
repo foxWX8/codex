@@ -2,15 +2,21 @@
 
 #include "third_party/sqlite/sqlite-amalgamation-3530000/sqlite3.h"
 
+#ifdef _WIN32
 #include <windows.h>
 #include <bcrypt.h>
+#else
+#include <boost/uuid/detail/md5.hpp>
+#endif
 
 #include <iomanip>
 #include <sstream>
 #include <utility>
 #include <vector>
 
+#ifdef _WIN32
 #pragma comment(lib, "bcrypt.lib")
+#endif
 
 namespace {
 
@@ -37,6 +43,7 @@ AuthResult sqlite_error(sqlite3* db) {
 }
 
 std::string md5_hex(const std::string& input) {
+#ifdef _WIN32
     BCRYPT_ALG_HANDLE algorithm = nullptr;
     BCRYPT_HASH_HANDLE hash = nullptr;
     DWORD object_size = 0;
@@ -75,6 +82,20 @@ std::string md5_hex(const std::string& input) {
         out << std::setw(2) << static_cast<int>(byte);
     }
     return out.str();
+#else
+    boost::uuids::detail::md5 hash;
+    boost::uuids::detail::md5::digest_type digest;
+    hash.process_bytes(input.data(), input.size());
+    hash.get_digest(digest);
+
+    const auto* bytes = reinterpret_cast<const unsigned char*>(&digest);
+    std::ostringstream out;
+    out << std::hex << std::setfill('0');
+    for (int index = 0; index < 16; ++index) {
+        out << std::setw(2) << static_cast<int>(bytes[index]);
+    }
+    return out.str();
+#endif
 }
 
 AuthStore::AuthStore(std::string db_path) : db_path_(std::move(db_path)) {}

@@ -26,3 +26,4 @@ users.db
 
 # Downloaded archives; keep extracted source files instead
 *.zip
+*.tar.gz
